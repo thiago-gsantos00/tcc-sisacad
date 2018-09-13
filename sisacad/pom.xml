@@ -1,0 +1,161 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>br.pucminas</groupId>
+  <artifactId>sisacad</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>SisAcad</name>
+  
+	<!-- Configurações do Build -->
+	<build>
+    	<finalName>SisAcad</finalName>
+    	<plugins>
+    		<plugin>
+    			<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-compiler-plugin</artifactId>
+            	<version>3.7.0</version>
+				<configuration>
+	            	<source>${java.version}</source>
+    	            <target>${java.version}</target>
+        	    </configuration>
+			</plugin>
+        	<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-war-plugin</artifactId>
+            	<version>2.6</version>
+            	<configuration>
+            		<warSourceDirectory>src/main/webapp</warSourceDirectory>
+	            	<failOnMissingWebXml>false</failOnMissingWebXml>
+            	</configuration>
+    		</plugin>
+    	</plugins>
+  	</build>
+  
+  	<!-- Dependências -->
+	<properties>
+		<java.version>1.8</java.version>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    	<spring.version>4.3.18.RELEASE</spring.version>
+    	<hibernate.version>4.3.11.Final</hibernate.version>
+    	<jackson.version>2.9.5</jackson.version>
+    	<c3p0.version>0.9.5.2</c3p0.version>
+    	<mysql.version>5.1.46</mysql.version>
+    	<servlet.version>3.0.1</servlet.version>
+    	<log4j.version>1.2.17</log4j.version>
+	</properties>	
+  
+  	<dependencies>
+  		<dependency>
+    		<groupId>javax.servlet</groupId>
+    		<artifactId>javax.servlet-api</artifactId>
+    		<version>${servlet.version}</version>
+    		<scope>provided</scope>
+		</dependency>
+  		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<!-- Banco de dados, pool de conexões e conector -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>${c3p0.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Jackson - Conversor JSON -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>jackson-annotations</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		
+		<!-- LOG -->
+		<dependency>
+    		<groupId>log4j</groupId>
+    		<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		
+		<!-- Google Guava -->
+		<dependency>
+	    	<groupId>com.google.guava</groupId>
+	    	<artifactId>guava</artifactId>
+	    	<version>22.0</version>
+		</dependency>
+		
+		<!-- Testes -->
+		<dependency>
+	    	<groupId>junit</groupId>
+	    	<artifactId>junit</artifactId>
+	      	<version>3.8.1</version>
+	      	<scope>test</scope>
+	    </dependency>
+	</dependencies>
+  
+</project>
